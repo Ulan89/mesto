@@ -6,10 +6,11 @@
     background-image: url('../../../images/edit-btn.svg');
     background-color: transparent;
     display: block;
-    border: none;
+    border: 1px solid white;
     outline: none;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    
     
 }
 .profile__edit-button:hover{
