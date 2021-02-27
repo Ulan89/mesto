@@ -9,8 +9,8 @@
     height: 40px;
     background: transparent;
     border: none;
-    outline: none; 
-    background-image: url(../../../images/closeIcon.svg)
+    outline: none;
+    background-image: url(../../../images/closeIcon.svg);
     
 }
 .popup__close:hover{

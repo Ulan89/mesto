@@ -7,7 +7,6 @@
     padding: 0px;
     margin: 0px;
     list-style: none;
-    grid-template-columns: repeat(3,minmax(100px,auto));   
 }
 @media screen and (max-width: 711px){
     .cards__list{
