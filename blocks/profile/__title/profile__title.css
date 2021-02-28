@@ -4,6 +4,10 @@
     color: #fff;
     font-weight: 500;
     margin: 0px 0px 16px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+    max-width: 336px;
     
 }
 @media screen and (max-width: 500px){

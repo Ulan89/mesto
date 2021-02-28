@@ -1,12 +1,12 @@
 .cards__list{
     display: grid;
-    grid-template-columns: repeat(3, 282px);
+    grid-template-columns: repeat(auto-fit, 282px);
+    justify-content: center;
     gap: 20px 17px;
-    max-width: 880px;
-    width: 100%;
     padding: 0px;
     margin: 0px;
     list-style: none;
+    text-decoration: none;
 }
 @media screen and (max-width: 711px){
     .cards__list{

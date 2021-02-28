@@ -5,9 +5,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    background-color: #fff;
     color: #000;
-    height: 79px;
+    width: 197px;
     padding: 0px;
     margin: 0px;
 }

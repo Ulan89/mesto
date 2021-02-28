@@ -1,6 +1,12 @@
 .header{
     display: flex;
-    flex-direction: column;
-    /* border: 1px solid white; */
+    flex-direction: row;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    padding-bottom: 40px;
+    max-width: 880px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+    
     
 }
