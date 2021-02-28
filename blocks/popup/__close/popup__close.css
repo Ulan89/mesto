@@ -21,7 +21,6 @@
 }
 @media screen and (max-width: 500px){
     .popup__close{
-        position: absolute;
         background-size: cover;
         width: 35px;
         height: 35px;
