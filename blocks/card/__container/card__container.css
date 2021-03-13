@@ -2,6 +2,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 246px;
+    max-width: 245px;
     margin: 25px auto 31px;    
+}
+@media screen and (max-width: 510px){
+    .card__container{
+        max-width: 156px;
+    }
+}
+@media screen and (max-width: 380px){
+    .card__container{
+        max-width: 246px;
+    }
 }
