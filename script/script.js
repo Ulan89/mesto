@@ -20,37 +20,23 @@ const popupOutBtn = document.querySelector('#popup-out');
 const popupImage = document.querySelector('.popup__image');
 const popupText = document.querySelector('.popup__text');
 
-function clickBtn() {
-    popupOpen.classList.add('popup_active');
+const openPopup = (popup) => {popup.classList.add('popup_active')};
+const closePopup = (popup) => {popup.classList.remove('popup_active')}; 
+
+
+function editFunctionHandler() {
     popupName.value = profileName.textContent;
     popupJob.value = profileJob.textContent; 
+    openPopup(popupEdit);
 }
-
-function rmBtn() {
-    popupOpen.classList.remove('popup_active');
-}    
-
-function subBtn(evt) {
+         
+function submitButtonHandler(evt) {
     evt.preventDefault();
     profileName.textContent = popupName.value;
     profileJob.textContent = popupJob.value;
-
-    rmBtn();
+    closePopup(popupOpen);                 
 }   
   
-//// popup II function
-
-const openFunc = item => item.classList.add('popup_active');
-function switchPopUp() {
-    openFunc(popupAddCard);
-}
-
-const closeFunc = item => item.classList.remove('popup_active');   
-function getPopup() {
-    closeFunc(popupAddCard);   
-}
-
-
 // начало добавление картинок Array/массив
 const initialCards = [
     {
@@ -112,8 +98,8 @@ renderList();
      cardsList.prepend(newTarget);
      inputName.value ='';
      inputImg.value = ''; 
-     closeFunc(popupAddCard);
-         
+  
+    closePopup(popupAddCard);             
  }
 
 function cardOff(element) {
@@ -126,7 +112,7 @@ function handleCardClick(link, title) {
     popupImage.src = link; 
     popupImage.alt = title; 
     popupText.textContent = title;
-    openFunc(popupPhoto);
+    openPopup(popupPhoto);
 }
 
 
@@ -137,13 +123,13 @@ function likeCardHandler(evt) {
 }
 
 
-popupClose.addEventListener('click', rmBtn); 
-editButton.addEventListener('click', clickBtn);
-popupForm.addEventListener('submit', subBtn);
-addBtn.addEventListener('click', switchPopUp);  
-popupDelete.addEventListener('click',getPopup); 
+popupClose.addEventListener('click', () => closePopup(popupOpen)); 
+editButton.addEventListener('click', editFunctionHandler);
+popupForm.addEventListener('submit', submitButtonHandler);
+addBtn.addEventListener('click', () => openPopup(popupAddCard));  
+popupDelete.addEventListener('click', () => closePopup(popupAddCard)); 
 placeForm.addEventListener('submit',inputGetFunc);
-popupOutBtn.addEventListener('click',() => closeFunc(popupPhoto));
+popupOutBtn.addEventListener('click', () => closePopup(popupPhoto));
 
 
 
