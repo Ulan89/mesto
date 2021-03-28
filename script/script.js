@@ -20,9 +20,9 @@ const popupOutBtn = document.querySelector('#popup-out');
 const popupImage = document.querySelector('.popup__image');
 const popupText = document.querySelector('.popup__text');
 
-const openPopup = (popup) => {popup.classList.add('popup_active')};
-const closePopup = (popup) => {popup.classList.remove('popup_active')}; 
 
+// const openPopup = (popup) => {popup.classList.add('popup_active')};
+// const closePopup = (popup) => {popup.classList.remove('popup_active')}; 
 
 function editFunctionHandler() {
     popupName.value = profileName.textContent;
@@ -96,9 +96,9 @@ renderList();
      evt.preventDefault();
      const newTarget = createDom({name: inputName.value, link: inputImg.value});
      cardsList.prepend(newTarget);
-     inputName.value ='';
-     inputImg.value = ''; 
-  
+     placeForm.reset();
+    
+
     closePopup(popupAddCard);             
  }
 
@@ -132,6 +132,35 @@ placeForm.addEventListener('submit',inputGetFunc);
 popupOutBtn.addEventListener('click', () => closePopup(popupPhoto));
 
 
+
+// /ESC close
+
+const closeEscapeButton = (evt, popupElement) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupElement);
+  }
+}
+
+const closeOverlay = (evt, popupElement) => {
+  evt.stopPropagation();
+  if (evt.target === popupElement) {
+    closePopup(popupElement);
+  }
+  
+}
+
+///function to close through overlay
+const openPopup = popupElement => {
+  popupElement.classList.add('popup_active');
+  document.addEventListener('keydown', evt => closeEscapeButton(evt, popupElement));
+  popupElement.addEventListener('click', evt => closeOverlay(evt, popupElement));
+};
+
+const closePopup = popupElement => {
+  popupElement.classList.remove('popup_active');
+  document.removeEventListener('keydown', evt => closeEscapeButton(evt, popupElement));
+  popupElement.removeEventListener('click', evt => closeOverlay(evt, popupElement));
+};
 
 
 
