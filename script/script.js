@@ -20,10 +20,6 @@ const popupOutBtn = document.querySelector('#popup-out');
 const popupImage = document.querySelector('.popup__image');
 const popupText = document.querySelector('.popup__text');
 
-
-// const openPopup = (popup) => {popup.classList.add('popup_active')};
-// const closePopup = (popup) => {popup.classList.remove('popup_active')}; 
-
 function editFunctionHandler() {
     popupName.value = profileName.textContent;
     popupJob.value = profileJob.textContent; 

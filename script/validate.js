@@ -7,25 +7,27 @@ const validate = {
   errorClass: 'popup__error_visible'
 };
 
-const hasInvalidInput = inputList => inputList.some(inputElement => !inputElement.validity.valid);
 
+const hasInvalidInput = inputList => inputList.some(inputElement => !inputElement.validity.valid);
+///функция на валидность состояния кнопки
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
       buttonElement.setAttribute('disabled', true);
       buttonElement.classList.add(validate.inactiveButtonClass);
   } else {
-      buttonElement.classList.remove(validate.inactiveButtonClass);
       buttonElement.removeAttribute('disabled');
-  }
+      buttonElement.classList.remove(validate.inactiveButtonClass);
+      
+  } 
 };
-
+///функция показа
 const showInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(validate.errorClass);
   inputElement.classList.add(validate.inputErrorClass);
 };
-
+///функция скрытия
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.classList.remove(validate.errorClass);
@@ -52,9 +54,9 @@ const setInputListeners = (formElement) => {
       toggleButtonState(inputList, buttonElement);
   });
 };
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(validate.formSelector));
+///функция запуска валидации
+function enableValidation ({formSelector}) {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   
   formList.forEach(formElement => {
       formElement.addEventListener('submit', evt => {
@@ -66,6 +68,4 @@ const enableValidation = () => {
 };
 
 enableValidation(validate);
-
-
 
