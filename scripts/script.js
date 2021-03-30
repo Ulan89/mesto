@@ -113,7 +113,7 @@ const openPopup = popupElement => {
 };
 
 const closePopup = popupElement => {
-  popupForm.reset();
+  placeForm.reset();
   popupElement.classList.remove('popup_active');
   document.removeEventListener('keydown',  closeEscapeButton);
 };
