@@ -18,20 +18,20 @@ const toggleButtonState = (inputList, buttonElement) => {
       buttonElement.removeAttribute('disabled');
   }
 };
-
+//***************функция показа ошибки
 const showInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(validate.errorClass);
   inputElement.classList.add(validate.inputErrorClass);
 };
-
+//*************Функция скрытия ошибки
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.classList.remove(validate.errorClass);
   inputElement.classList.remove(validate.inputErrorClass);
 };
-
+//************* Проверка на валидность инпутов
 const checkInput = (formElement, inputElement) => {
   if (inputElement.validity.valid) {
     hideInputError(formElement, inputElement, validate);
@@ -52,6 +52,7 @@ const setInputListeners = (formElement) => {
       toggleButtonState(inputList, buttonElement, validate);
   });
 };
+//*************************Запуск валидации
 
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll(validate.formSelector));
@@ -67,18 +68,16 @@ const enableValidation = () => {
 
 enableValidation(validate);
 
-
-// const clearValidation = (validate) => {
-//   const formList = Array.from(document.querySelectorAll(validate.formSelector));
-//   formList.forEach(formElement => {
-//       const inputList = Array.from(formElement.querySelectorAll(validate.inputSelector));
-//       inputList.forEach(inputElement => {
-//           hideInputError(formElement, inputElement, validate);
-//       });
-//       const buttonElement = formElement.querySelector(validate.submitButtonSelector);
-//       toggleButtonState(inputList, buttonElement, validate);
-//   });
-// };
-
-
+//******************** функция блакировки кнопки после сабмита
+const resetValidation = (validate) => {
+    const formList = Array.from(document.querySelectorAll(validate.formSelector));
+    formList.forEach(formElement => {
+        const inputList = Array.from(formElement.querySelectorAll(validate.inputSelector));
+        inputList.forEach(inputElement => {
+            hideInputError(formElement, inputElement, validate);
+        });
+        const buttonElement = formElement.querySelector(validate.submitButtonSelector);
+        toggleButtonState(inputList, buttonElement, validate);
+    });
+};
 
