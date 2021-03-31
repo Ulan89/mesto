@@ -115,7 +115,6 @@ const openPopup = popupElement => {
 };
 
 const closePopup = popupElement => {
-  popupAddCardForm.reset();
   popupElement.classList.remove('popup_active');
   document.removeEventListener('keydown',  closeEscapeButton);
   document.removeEventListener('click', closeOverlay);
@@ -129,6 +128,7 @@ profileEditButton.addEventListener('click', () => {
   resetValidation(validate);
 });
 profileAddButton.addEventListener('click', () => {
+  popupAddCardForm.reset();
   resetValidation(validate);
   openPopup(popupAddCard);
   
