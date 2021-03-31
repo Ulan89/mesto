@@ -9,7 +9,7 @@ const validate = {
 
 const hasInvalidInput = inputList => inputList.some(inputElement => !inputElement.validity.valid);
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, validate) => {
   if (hasInvalidInput(inputList, validate)) {
       buttonElement.setAttribute('disabled', true);
       buttonElement.classList.add(validate.inactiveButtonClass);
@@ -19,20 +19,20 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 //***************функция показа ошибки
-const showInputError = (formElement, inputElement) => {
+const showInputError = (formElement, inputElement, validate) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(validate.errorClass);
   inputElement.classList.add(validate.inputErrorClass);
 };
 //*************Функция скрытия ошибки
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, validate) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.classList.remove(validate.errorClass);
   inputElement.classList.remove(validate.inputErrorClass);
 };
 //************* Проверка на валидность инпутов
-const checkInput = (formElement, inputElement) => {
+const checkInput = (formElement, inputElement, validate) => {
   if (inputElement.validity.valid) {
     hideInputError(formElement, inputElement, validate);
   } else {
@@ -40,7 +40,7 @@ const checkInput = (formElement, inputElement) => {
   }
 };
 
-const setInputListeners = (formElement) => {
+const setInputListeners = (formElement, validate) => {
   const inputList = Array.from(formElement.querySelectorAll(validate.inputSelector));
   const buttonElement = formElement.querySelector(validate.submitButtonSelector);
     
@@ -54,7 +54,7 @@ const setInputListeners = (formElement) => {
 };
 //*************************Запуск валидации
 
-const enableValidation = () => {
+const enableValidation = (validate) => {
   const formList = Array.from(document.querySelectorAll(validate.formSelector));
   
   formList.forEach(formElement => {
